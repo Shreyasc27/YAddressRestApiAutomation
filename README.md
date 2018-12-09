@@ -24,8 +24,7 @@ Steps to run locally -
     a. emailable-report.html
     b. YAddressRestApiAutomation.html
 
-
-#Integration with CircleCI -
+Integration with CircleCI -
 
 YAddressRestApiAutomation execution is integrated with CircleCI.
 
