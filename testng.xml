@@ -1,0 +1,139 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="YAddressRestApiAutomation" verbose ="5" parallel="methods" thread-count="10">
+
+	<!-- Can take values "http" or "https" -->
+	<parameter name = "protocol" value="http"/> 
+	
+    <listeners>
+        <listener class-name="utils.ExtentReportListener"></listener>
+    </listeners>
+
+	<!-- TEST CASE 01 - Verify the response when the Address Line 1 and Address 2 are both valid. 
+	All the fields in the response to be validated. 
+	StateFP is 2 digits is validated. CountyFP is 3 digits is validated. 
+	Census tract number is in the format XXXX.XX is validated. 
+	Census Block is 4 digits is validated. 
+	Geo Precision = 5 (Location of the exact address) is validated. -->
+	
+    <test name="verify_When_AddressLineOne_And_AddressLineTwo_Are_Valid">
+    	<parameter name = "addressLineOne" value="506 4TH AVE APT 1"/> 
+    	<parameter name = "addressLineTwo" value="ASBURY PARK, NJ 07712-6086"/> 
+        <classes>
+            <class name="test.TestYaddress">
+            	<methods>
+        			<include name="verify_Response_For_AddressLineOne_And_AddressLineTwo_Inputs" />
+      			</methods>
+            </class>
+        </classes>
+    </test>
+    
+    <!-- TEST CASE 02 - Verify the response when the Address Line 1 and Address 2 are both invalid. 
+    Address Line 1 and Address Line 2 will have same values as invalid input. 
+    All other fields will be blank. 
+    Error Code = 2 (Input Address was supplied in invalid format) is validated. 
+    Geo Precision = 0 (Location could not be determined) is validated. -->
+    
+    <test name="verify_When_AddressLineOne_And_AddressLineTwo_Are_InValid">
+    	<parameter name = "addressLineOne" value="%$#@%"/> 
+    	<parameter name = "addressLineTwo" value="%$#@%"/> 
+        <classes>
+            <class name="test.TestYaddress">
+            	<methods>
+        			<include name="verify_Response_For_AddressLineOne_And_AddressLineTwo_Inputs" />
+      			</methods>
+            </class>
+        </classes>
+    </test>
+    
+    <!-- TEST CASE 03 - Verify the response when the Street specified in Address Line 1 was not found in the Zip code provided or any Zip code of the City or State. 
+    Error Code = 3 (Specified street was not found in the ZIP code provided or in any ZIP code of the city-state). 
+    Geo Precision=3 Center point of the Zip code) is validated. -->
+    
+    <test name="verify_When_Street_Not_Found_In_ZipCode">
+    	<parameter name = "addressLineOne" value="506 234TH AVE APT 1"/> 
+    	<parameter name = "addressLineTwo" value="ASBURY PARK, NJ 07712-6086"/> 
+        <classes>
+            <class name="test.TestYaddress">
+            	<methods>
+        			<include name="verify_Response_For_AddressLineOne_And_AddressLineTwo_Inputs" />
+      			</methods>
+            </class>
+        </classes>
+    </test>
+    
+    <!-- TEST CASE 04 - Verify the response when the City specified in Address Line 1 was not found in the State. 
+    Error Code = 4 (City is not found in the state.) is validated. 
+    Geo Precision=3 Center point of the Zip code) is validated. -->
+    
+    <test name="verify_When_City_Not_Found_In_State">
+    	<parameter name = "addressLineOne" value="506 T AVE APT 1"/> 
+    	<parameter name = "addressLineTwo" value="PARK, NJ 07712-6086"/> 
+        <classes>
+            <class name="test.TestYaddress">
+            	<methods>
+        			<include name="verify_Response_For_AddressLineOne_And_AddressLineTwo_Inputs" />
+      			</methods>
+            </class>
+        </classes>
+    </test>
+    
+    <!-- TEST CASE 05 - Verify the response when the House Number specified in Address Line 1 was not found in the Street. 
+    Error Code = 8 (No such house number in the street.) is validated. 
+    Geo Precison=5 (Location of the exact address.) is validated. -->
+    
+    <test name="verify_When_HouseNumber_Not_Found_In_Street">
+    	<parameter name = "addressLineOne" value="506 L.N.Road APT 1"/> 
+    	<parameter name = "addressLineTwo" value="ASBURY PARK, NJ 07712-6086"/> 
+        <classes>
+            <class name="test.TestYaddress">
+            	<methods>
+        			<include name="verify_Response_For_AddressLineOne_And_AddressLineTwo_Inputs" />
+      			</methods>
+            </class>
+        </classes>
+    </test>
+    
+    <!-- TEST CASE 06 - Verify the response when the Address Line 2 is only State. 
+    Geo Precision=1 (Center point of the state.) is validated. -->
+    
+    <test name="verify_When_AddressLine2_Is_Only_State">
+    	<parameter name = "addressLineOne" value=""/> 
+    	<parameter name = "addressLineTwo" value="NJ"/> 
+        <classes>
+            <class name="test.TestYaddress">
+            	<methods>
+        			<include name="verify_Response_For_AddressLineOne_And_AddressLineTwo_Inputs" />
+      			</methods>
+            </class>
+        </classes>
+    </test>
+    
+  	<!-- TEST CASE 07 - Verify the response when the Address Line 2 is City and State. 
+  	Geo Precision=2 (City center. 
+  	Usually points to the downtown city district.) is validated. -->
+    
+    <test name="verify_When_AddressLine2_Is_City_And_State">
+    	<parameter name = "addressLineOne" value=""/> 
+    	<parameter name = "addressLineTwo" value="ASBURY PARK, NJ"/> 
+        <classes>
+            <class name="test.TestYaddress">
+            	<methods>
+        			<include name="verify_Response_For_AddressLineOne_And_AddressLineTwo_Inputs" />
+      			</methods>
+            </class>
+        </classes>
+    </test>
+    
+    <test name="verify_When_AddressLine1_DoesNot_Have_Street">
+    	<parameter name = "addressLineOne" value="506  AVE APT 1"/> 
+    	<parameter name = "addressLineTwo" value="ASBURY PARK, NJ 07712-6086"/> 
+        <classes>
+            <class name="test.TestYaddress">
+            	<methods>
+        			<include name="verify_Response_For_AddressLineOne_And_AddressLineTwo_Inputs" />
+      			</methods>
+            </class>
+        </classes>
+    </test>
+    
+</suite>
