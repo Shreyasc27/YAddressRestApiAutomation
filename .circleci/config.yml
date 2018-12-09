@@ -28,3 +28,4 @@ jobs: # a collection of steps
           
       - store_artifacts:
           path: ./target/surefire-reports/emailable-report.html
+          path: ./target/surefire-reports/YAddressRestApiAutomation.html
