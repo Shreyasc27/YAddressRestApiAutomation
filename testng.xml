@@ -2,7 +2,7 @@
 <suite name="YAddressRestApiAutomation" verbose ="5" parallel="methods" thread-count="10">
 
 	<!-- Can take values "http" or "https" -->
-	<parameter name = "protocol" value="http"/> 
+	<parameter name="protocol" value="http"/> 
 	
     <listeners>
         <listener class-name="utils.ExtentReportListener"></listener>
