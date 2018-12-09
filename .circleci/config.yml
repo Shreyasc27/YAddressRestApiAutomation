@@ -9,14 +9,8 @@ jobs: # a collection of steps
 
     steps: # a collection of executable commands
     
-      - run: pwd
-
       - checkout # check out source code to working directory
 
-      - run: ls -ltr
-      
-      - run: find . -name "*.properties"
-      
       - restore_cache: # restore the saved cache after the first run or if `pom.xml` has changed
           key: circleci-demo-java-spring-{{ checksum "pom.xml" }}
       
