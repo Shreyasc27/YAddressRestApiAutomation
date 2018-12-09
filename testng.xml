@@ -124,6 +124,9 @@
         </classes>
     </test>
     
+    <!-- TESTCASE 08 - Verify the response when the Address Line 1 does not have the Street. 
+    Geo Precision=4 (Nearest end of the nearest street block.) is validated. -->
+    
     <test name="verify_When_AddressLine1_DoesNot_Have_Street">
     	<parameter name = "addressLineOne" value="506  AVE APT 1"/> 
     	<parameter name = "addressLineTwo" value="ASBURY PARK, NJ 07712-6086"/> 
