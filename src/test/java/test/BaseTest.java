@@ -14,7 +14,7 @@ public class BaseTest {
 	public void BeforeSuite() throws Exception
 	{
         
-		PropertyConfigurator.configure("src/main/resources/log4j.properties");
+		PropertyConfigurator.configure("./src/main/resources/log4j.properties");
 		PropertiesManager.initializeProperties();
 	    logger.info("Properties Initialized");
 

@@ -13,7 +13,7 @@ public class PropertiesManager {
      */
     public static void initializeProperties() throws IOException {
         properties = new Properties();
-        FileInputStream iStr = new FileInputStream("src/main/resources/applicationDetails.properties");
+        FileInputStream iStr = new FileInputStream("./src/main/resources/applicationDetails.properties");
         properties.load(iStr);
         iStr.close();
     }

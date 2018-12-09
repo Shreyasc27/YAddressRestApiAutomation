@@ -71,7 +71,7 @@ public class GetAddressDetails extends BaseAPI {
 	public Yaddress getExpectedAddressDetails(String jsonFileToRead) throws JsonParseException, JsonMappingException, IOException {
 		
 		ObjectMapper objectMapper = new ObjectMapper();
-		File file = new File("src\\test\\java\\testdata\\" + jsonFileToRead + ".json");
+		File file = new File("./src/test/java/testdata/" + jsonFileToRead + ".json");
 		Yaddress yaddress = objectMapper.readValue(file, Yaddress.class);
 		return yaddress;
 		
