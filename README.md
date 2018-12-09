@@ -1,4 +1,4 @@
-#Steps to run locally -
+Steps to run locally -
  
 1. Set up JAVA_HOME.
  
@@ -35,7 +35,7 @@ https://circleci.com/gh/Shreyasc27/YAddressRestApiAutomation/30
 Execution result can be viewed at -
 https://30-161029561-gh.circle-artifacts.com/0/home/circleci/YAddressRestApiAutomation/target/surefire-reports/emailable-report.html
 
-CircleCI can be triggered for execution by clicking Rerun workflow - Renrin workflow
+CircleCI can be triggered for execution by clicking Rerun workflow - Rerun workflow
 
 
 
