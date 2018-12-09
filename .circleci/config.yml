@@ -33,4 +33,4 @@ jobs: # a collection of steps
           path: target/surefire-reports 
           
       - store_artifacts:
-          path: /target/surefire-reports
+          path: /target/surefire-reports/emailable-report.html
