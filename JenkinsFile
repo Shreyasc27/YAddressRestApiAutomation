@@ -11,11 +11,11 @@ pipeline {
                 bat 'mvn test' 
             }
         }
-		post {
-			always {
-				archiveArtifacts artifacts: 'target\surefire-reports\*.*', 
-				onlyIfSuccessful: true
-			}
-		}
     }
+	post {
+		always {
+			archiveArtifacts artifacts: 'target\surefire-reports\*.*', 
+			onlyIfSuccessful: true
+		}
+	}
 }
